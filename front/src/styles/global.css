@@ -1,0 +1,13 @@
+@import './variables.css';
+@import './reset.css';
+
+body {
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+}
+
+button,
+input {
+    font-family: inherit;
+}
