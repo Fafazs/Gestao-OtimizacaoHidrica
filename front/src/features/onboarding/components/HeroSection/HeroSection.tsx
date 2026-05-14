@@ -1,6 +1,6 @@
 import styles from './HeroSection.module.css';
 
-import seedlingImage from '../../../assets/images/seedling.png';
+import seedlingImage from '../../../../assets/images/seedling.png';
 
 export function HeroSection() {
   return (

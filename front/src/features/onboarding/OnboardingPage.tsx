@@ -1,11 +1,12 @@
 import styles from './OnboardingPage.module.css';
-import { Header } from '../../components/layout/Header/Header';
-import { HeroSection } from '../../components/onboarding/HeroSection/HeroSection';
-import { OptionCard } from '../../components/onboarding/OptionCard/OptionCard';
-import { ProgressIndicator } from '../../components/onboarding/ProgressIndicator/ProgressIndicator';
-import { PlantingModal } from '../../components/onboarding/PlantingModal/PlantingModal';
-import { onboardingOptions } from '../../metaData/onboardingOptions';
-import { useModal } from '../../hooks/useModal';
+import { Header } from '../../shared/components/Header/Header';
+import { HeroSection } from '../../features/onboarding/components/HeroSection/HeroSection';
+import { OptionCard } from '../../features/onboarding/components/OptionCard/OptionCard';
+import { ProgressIndicator } from '../../features/onboarding/components/ProgressIndicator/ProgressIndicator';
+import { PlantingModal } from '../../features/onboarding/components/PlantingModal/PlantingModal';
+import { onboardingOptions } from './data/onboardingOptions';
+import { useModal } from './hooks/useModal';
+import { TextButton } from '../../shared/components/TextButton/TextButton'
 
 export function OnboardingPage() {
   const {
@@ -31,6 +32,9 @@ export function OnboardingPage() {
             />
           ))}
         </section>
+        <TextButton to="/home">
+          Acessar app sem criar perfil
+        </TextButton>
 
         <ProgressIndicator
           currentStep={1}

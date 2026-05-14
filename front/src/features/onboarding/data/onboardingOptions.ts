@@ -1,7 +1,7 @@
 import type { OnboardingOption } from "../types/onboarding";
-import plantIcon from '../assets/images/vasoIcon.png'
-import homeIcon from '../assets/images/homeIcon.png';
-import tratorIcon from "../assets/images/tratorIcon.png";
+import plantIcon from '../../../assets/images/vasoIcon.png';
+import homeIcon from '../../../assets/images/homeIcon.png';
+import tratorIcon from "../../../assets/images/tratorIcon.png";
 
 export const onboardingOptions: OnboardingOption[] = [
   {
