@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step {
+  color: var(--color-primary);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+
+  color: var(--color-text);
+
+  line-height: 1.2;
+}
+
+.description {
+  color: var(--color-text-secondary);
+
+  font-size: 18px;
+  line-height: 1.6;
+}

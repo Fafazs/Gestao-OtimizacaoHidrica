@@ -1,0 +1,51 @@
+.navigation {
+  display: flex;
+  gap: 16px;
+
+  margin-top: 16px;
+}
+
+.primaryButton {
+  flex: 1;
+
+  height: 60px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: var(--color-secondary);
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.primaryButton:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.secondaryButton {
+  height: 60px;
+
+  padding: 0 24px;
+
+  border-radius: 16px;
+
+  border: 2px solid var(--color-outline);
+
+  background: white;
+
+  color: var(--color-text);
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+}

@@ -1,14 +1,34 @@
 import styles from './Header.module.css';
 import logo from '../../../assets/images/logo.png';
 
-export function Header() {
+import { ArrowLeft } from 'lucide-react';
+
+interface HeaderProps {
+  showBackButton?: boolean;
+  onBack?: () => void;
+}
+
+export function Header({
+  showBackButton = false,
+  onBack,
+}: HeaderProps) {
   return (
     <header className={styles.header}>
-      <div className={styles.logoWrapper}>
-        <img src={logo} alt="EhaLogo" />
+  {showBackButton && (
+    <button
+      className={styles.backButton}
+      onClick={onBack}
+      type="button"
+    >
+      <ArrowLeft size={24} />
+    </button>
+  )}
 
-        <h1>AgroCloud</h1>
-      </div>
-    </header>
+  <div className={styles.logoWrapper}>
+    <img src={logo} alt="AgroCloud Logo" />
+    <h1>AgroCloud</h1>
+  </div>
+</header>
   );
 }
+

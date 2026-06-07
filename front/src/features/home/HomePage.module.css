@@ -1,0 +1,16 @@
+.content {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+}
+
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
