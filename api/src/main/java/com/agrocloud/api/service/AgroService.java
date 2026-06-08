@@ -23,7 +23,6 @@ public class AgroService {
         this.articleRepo = articleRepo;
     }
 
-    // --- MÓDULO DE AUTENTICAÇÃO (AuthController) ---
 
     @Transactional
     public User registerUser(RegisterRequest request) {
@@ -53,7 +52,6 @@ public class AgroService {
         return userRepo.save(anonymous);
     }
 
-    // --- MÓDULO DE TAREFAS (TaskController) ---
 
     public List<Task> getTodayTasksForUser(Long userId) {
         return taskRepo.findByFieldUserIdAndStatus(userId, "PENDENTE");
@@ -65,7 +63,6 @@ public class AgroService {
         return taskRepo.save(new Task(title, description, 3, 0, field));
     }
 
-    // --- MÓDULO DE CANTEIROS (FieldController) ---
 
     public List<Field> getUserFields(Long userId) {
         return fieldRepo.findByUserId(userId);
@@ -75,7 +72,6 @@ public class AgroService {
         return taskRepo.findByFieldId(fieldId);
     }
 
-    // --- MÓDULO DE PERFIL (UserController) ---
 
     @Transactional
     public User updateProfile(Long userId, String name, String email) {
@@ -89,7 +85,6 @@ public class AgroService {
         userRepo.deleteById(userId); 
     }
 
-    // --- MÓDULO DE BIBLIOTECA (CropLibraryController) ---
 
     public List<Article> getAllArticles() {
         return articleRepo.findAll();

@@ -23,10 +23,8 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Se já houver dados de semente, pula para não duplicar
         if (userRepo.count() > 0) return;
 
-        // 1. Alimenta a Biblioteca Pública (Ficha detalhada requisitada)
         articleRepo.save(new Article(
             "Alface Crespa",
             "https://agrocloud.com/images/alface.jpg",
@@ -43,15 +41,12 @@ public class DataSeeder implements CommandLineRunner {
             "21°C a 26°C", "60% a 70%", "Rico em matéria orgânica, bem drenado e levemente ácido"
         ));
 
-        // 2. Cria o usuário piloto de testes (Simulando o Fabricio do documento)
         User fabricio = new User("Fabricio", "fabricio@email.com", "senha_segura_123");
         userRepo.save(fabricio);
 
-        // 3. Cria as zonas de cultivo físicas dele (Fields)
         Field f1 = fieldRepo.save(new Field("Horta da Varanda", "Tomate", fabricio));
         Field f2 = fieldRepo.save(new Field("Vaso Suspenso", "Coentro", fabricio));
 
-        // 4. Cria as tarefas do dia mapeadas com as prioridades corretas
         taskRepo.save(new Task("Irrigação da Tarde", "Balanço hídrico prescrito pelo motor", 1, 15, f1));
         taskRepo.save(new Task("Adubação Orgânica", "Adicionar composto de húmus nas bordas do vaso", 2, 0, f1));
         taskRepo.save(new Task("Check de Pragas", "Olhar o verso das folhas em busca de pulgões", 3, 0, f2));
