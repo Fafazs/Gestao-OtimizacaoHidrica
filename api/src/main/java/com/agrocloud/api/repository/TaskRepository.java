@@ -1,12 +1,10 @@
 package com.agrocloud.api.repository;
-
-import com.agrocloud.api.model.Task;
+import com.agrocloud.api.model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
+import java.util.Optional;
 
-@Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    List<Task> findByCropIdAndIsCompletedFalse(Long cropId);
+    List<Task> findByFieldUserIdAndStatus(Long userId, String status);
+    List<Task> findByFieldId(Long fieldId);
 }

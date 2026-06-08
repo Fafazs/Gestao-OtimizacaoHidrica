@@ -5,25 +5,41 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String name;
-    private String profileType;
-    private boolean isRegistered;
+    private String email;
+    private String password;
+    private boolean isAnonymous; 
 
     protected User() {}
 
-    public User(String profileType) {
-        this.profileType = profileType;
-        this.isRegistered = false;
-        this.name = "Produtor Anônimo";
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.isAnonymous = false;
     }
 
-    public void registerAccount(String name) {
-        this.name = name;
-        this.isRegistered = true;
+    public static User createAnonymous() {
+        User user = new User();
+        user.name = "Visitante";
+        user.email = "anonimo@agrocloud.com";
+        user.isAnonymous = true;
+        return user;
     }
+
+    public void updateProfile(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
     public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; } 
     public String getName() { return name; }
-    public boolean isRegistered() { return isRegistered; }
+    public String getEmail() { return email; }
+    public String getPassword() { return password; }
+    public boolean isAnonymous() { return isAnonymous; }
 }

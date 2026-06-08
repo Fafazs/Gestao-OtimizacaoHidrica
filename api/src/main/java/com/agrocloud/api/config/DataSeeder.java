@@ -2,46 +2,60 @@ package com.agrocloud.api.config;
 
 import com.agrocloud.api.model.*;
 import com.agrocloud.api.repository.*;
-import com.agrocloud.api.service.AgroService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import java.util.List;
 
 @Configuration
 public class DataSeeder implements CommandLineRunner {
 
     private final UserRepository userRepo;
-    private final CropRepository cropRepo;
+    private final FieldRepository fieldRepo;
+    private final TaskRepository taskRepo;
     private final ArticleRepository articleRepo;
-    private final AgroService agroService;
 
-    public DataSeeder(UserRepository u, CropRepository c, ArticleRepository a, AgroService agroService) {
-        this.userRepo = u; this.cropRepo = c; this.articleRepo = a; this.agroService = agroService;
+    public DataSeeder(UserRepository userRepo, FieldRepository fieldRepo, TaskRepository taskRepo, ArticleRepository articleRepo) {
+        this.userRepo = userRepo;
+        this.fieldRepo = fieldRepo;
+        this.taskRepo = taskRepo;
+        this.articleRepo = articleRepo;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        User seuJoao = new User("AGRICULTOR");
-        seuJoao.registerAccount("Seu João");
-        userRepo.save(seuJoao);
+        // Se já houver dados de semente, pula para não duplicar
+        if (userRepo.count() > 0) return;
 
-        Crop tomate = new Crop("Tomate Cereja - Canteiro 01", seuJoao, 1200.0);
-        tomate.updateCultivation("Floração", 1.15); 
-        cropRepo.save(tomate);
-
-        agroService.generateDailyWaterPrescription(tomate.getId(), 5.0, 2.0, false);
-                
+        // 1. Alimenta a Biblioteca Pública (Ficha detalhada requisitada)
         articleRepo.save(new Article(
-            "Manejo do Pulgão no Tomateiro", 
-            "Pragas", 
-            "* O que fazer: Aplique óleo de neem diluído a 1% nas folhas ao fim da tarde.\n* O que evitar: Não jogue água diretamente sobre as folhas afetadas nas horas de sol forte."
-        ));
-        
-        articleRepo.save(new Article(
-            "Guia de Espaçamento Hídrico do Tomate", 
-            "Hortaliças", 
-            "* Espaçamento ideal: 50cm entre plantas e 1m entre linhas.\n* Dica de Sede: O tomate precisa de solo úmido, mas nunca encharcado na fase de Floração."
+            "Alface Crespa",
+            "https://agrocloud.com/images/alface.jpg",
+            "A alface crespa é de rápido cultivo e excelente para sistemas hidropônicos ou canteiros suspensos.",
+            List.of("Rúcula", "Cebolinha"),
+            "18°C a 24°C", "70%", "Bem drenado, aerado e rico em nitrogênio"
         ));
 
-        System.out.println("✅ BACKEND AGROCLOUD TOTALMENTE ATUALIZADO CONFORME O DRS!");
+        articleRepo.save(new Article(
+            "Tomate Cereja",
+            "https://agrocloud.com/images/tomate.jpg",
+            "O tomate cereja é de fácil cultivo em vasos e jardineiras, produzindo frutos adocicados.",
+            List.of("Manjericão", "Calêndula"),
+            "21°C a 26°C", "60% a 70%", "Rico em matéria orgânica, bem drenado e levemente ácido"
+        ));
+
+        // 2. Cria o usuário piloto de testes (Simulando o Fabricio do documento)
+        User fabricio = new User("Fabricio", "fabricio@email.com", "senha_segura_123");
+        userRepo.save(fabricio);
+
+        // 3. Cria as zonas de cultivo físicas dele (Fields)
+        Field f1 = fieldRepo.save(new Field("Horta da Varanda", "Tomate", fabricio));
+        Field f2 = fieldRepo.save(new Field("Vaso Suspenso", "Coentro", fabricio));
+
+        // 4. Cria as tarefas do dia mapeadas com as prioridades corretas
+        taskRepo.save(new Task("Irrigação da Tarde", "Balanço hídrico prescrito pelo motor", 1, 15, f1));
+        taskRepo.save(new Task("Adubação Orgânica", "Adicionar composto de húmus nas bordas do vaso", 2, 0, f1));
+        taskRepo.save(new Task("Check de Pragas", "Olhar o verso das folhas em busca de pulgões", 3, 0, f2));
+
+        System.out.println("API RODANDO...");
     }
 }
