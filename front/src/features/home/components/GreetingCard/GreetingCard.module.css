@@ -1,13 +1,12 @@
 .card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .card h2 {
   font-size: 24px;
   font-weight: 700;
-
   color: var(--color-primary);
 }
 

@@ -1,9 +1,14 @@
 import { AppRoutes } from './routes/AppRoutes';
 
-import '../styles/global.css';
+import {
+  AuthProvider,
+} from '../features/auth/context/AuthContext';
 
 export default function App() {
-  return <AppRoutes />;
+  return (
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
+  );
 }
-
 

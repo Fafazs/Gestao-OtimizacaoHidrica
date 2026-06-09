@@ -21,30 +21,33 @@
 
   border: 2px solid var(--color-outline);
   border-radius: var(--radius-md);
-
+  padding-right: 56px;
   font-size: 16px;
 }
 
 .passwordWrapper {
   position: relative;
+   padding-right: 56px;
 }
 
 .showButton {
   position: absolute;
 
-  right: 12px;
+  right: 16px;
   top: 50%;
 
   transform: translateY(-50%);
 
-  border: none;
-  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  color: var(--color-primary);
+  border: none;
+  background: transparent;
+
+  color: var(--color-text-secondary);
 
   cursor: pointer;
-
-  font-weight: 600;
 }
 
 .success {

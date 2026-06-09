@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Eye, EyeOff } from 'lucide-react';
 import styles from './AccountStep.module.css';
 
 interface AccountStepProps {
@@ -87,16 +87,18 @@ export function AccountStep({
           />
 
           <button
-            type="button"
-            className={styles.showButton}
-            onClick={() =>
-              setShowPassword(!showPassword)
-            }
-          >
-            {showPassword
-              ? 'Ocultar'
-              : 'Mostrar'}
-          </button>
+  type="button"
+  className={styles.showButton}
+  onClick={() =>
+    setShowPassword(!showPassword)
+  }
+>
+  {showPassword ? (
+    <EyeOff size={20} />
+  ) : (
+    <Eye size={20} />
+  )}
+</button>
         </div>
       </div>
 

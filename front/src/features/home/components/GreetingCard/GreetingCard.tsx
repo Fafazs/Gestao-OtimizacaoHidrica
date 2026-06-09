@@ -1,11 +1,15 @@
 import styles from './GreetingCard.module.css';
 
 export function GreetingCard() {
+  const user = JSON.parse(
+    localStorage.getItem('user') || '{}'
+  );
+
   return (
     <section className={styles.card}>
       <div>
         <h2>
-          Bom dia, Seu João
+          Bom dia, {user.name || 'Produtor'}
         </h2>
 
         <p>

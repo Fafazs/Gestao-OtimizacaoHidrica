@@ -6,13 +6,18 @@ interface StepNavigationProps {
 
   disableNext?: boolean;
   showPrevious?: boolean;
+
+  nextLabel?: string;
 }
 
 export function StepNavigation({
   onNext,
   onPrevious,
+
   disableNext = false,
   showPrevious = true,
+
+  nextLabel = 'Continuar',
 }: StepNavigationProps) {
   return (
     <div className={styles.navigation}>
@@ -30,7 +35,7 @@ export function StepNavigation({
         disabled={disableNext}
         onClick={onNext}
       >
-        Continuar
+        {nextLabel}
       </button>
     </div>
   );

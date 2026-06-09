@@ -29,9 +29,29 @@ const [formData, setFormData] =
     setCurrentStep(prev => prev - 1);
   }
 
-  function updateField(
-  field: keyof BeginnerProfileFormData,
-  value: string | number | null
+  function resetForm() {
+  setFormData({
+    spaceId: null,
+    objectiveId: null,
+    cropId: null,
+
+    resourceIds: [],
+
+    name: '',
+    email: '',
+
+    password: '',
+    confirmPassword: '',
+  });
+
+  setCurrentStep(1);
+}
+
+  function updateField<
+  K extends keyof BeginnerProfileFormData
+>(
+  field: K,
+  value: BeginnerProfileFormData[K]
 ) {
   setFormData(prev => ({
     ...prev,
@@ -64,7 +84,7 @@ const [formData, setFormData] =
 
     nextStep,
     previousStep,
-
+    resetForm,
     updateField,
     toggleResource,
   };

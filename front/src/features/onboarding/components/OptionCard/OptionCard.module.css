@@ -1,20 +1,27 @@
 .card {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    min-height: 120px;
-    border: none;
-    border-radius: 16px;
-    background: var(--color-surface);
-    padding: 24px;
-    box-shadow: var(--shadow-card);
-    cursor: pointer;
-    transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 24px;
+
+  text-decoration: none;
+
+  background: var(--color-surface);
+
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-card);
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .iconWrapper {

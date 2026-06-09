@@ -2,19 +2,28 @@ import styles from './OnboardingPage.module.css';
 import { Header } from '../../shared/components/Header/Header';
 import { HeroSection } from '../../features/onboarding/components/HeroSection/HeroSection';
 import { OptionCard } from '../../features/onboarding/components/OptionCard/OptionCard';
-import { ProgressIndicator } from '../../features/onboarding/components/ProgressIndicator/ProgressIndicator';
-import { PlantingModal } from '../../features/onboarding/components/PlantingModal/PlantingModal';
 import { onboardingOptions } from './data/onboardingOptions';
-import { useModal } from './hooks/useModal';
 import { TextButton } from '../../shared/components/TextButton/TextButton'
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/hooks/useAuth';
 
 export function OnboardingPage() {
-  const {
-    isOpen,
-    openModal,
-    closeModal
-  } = useModal();
+  const navigate = useNavigate();
 
+const { login } = useAuth();
+
+function handleAnonymousAccess() {
+  login(
+    'anonymous-token',
+    {
+      id: 0,
+      name: 'Visitante',
+      email: '',
+    }
+  );
+
+  navigate('/home');
+}
   return (
     <div className={styles.page}>
       <Header />
@@ -28,24 +37,17 @@ export function OnboardingPage() {
               key={option.id}
               title={option.title}
               icon={option.icon}
-              onClick={openModal}
+              to={option.route}
             />
           ))}
         </section>
-        <TextButton to="/home">
+
+        <TextButton
+          onClick={handleAnonymousAccess}
+        >
           Acessar app sem criar perfil
         </TextButton>
-
-        <ProgressIndicator
-          currentStep={1}
-          totalSteps={4}
-        />
       </main>
-
-      <PlantingModal
-        isOpen={isOpen}
-        onClose={closeModal}
-      />
     </div>
   );
 }
