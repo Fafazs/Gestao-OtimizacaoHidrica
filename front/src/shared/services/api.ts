@@ -11,8 +11,13 @@ export async function apiFetch(
   );
 
   if (!response.ok) {
+    const text =
+      await response.text();
+
+    console.error(text);
+
     throw new Error(
-      'Erro na requisição'
+      `Erro ${response.status}: ${text}`
     );
   }
 

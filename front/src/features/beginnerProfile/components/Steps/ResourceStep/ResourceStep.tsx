@@ -1,5 +1,5 @@
 import { SelectionCard } from '../../../../../shared/components/SelectionCard/SelectionCard';
-
+import styles from './ResouceStep.module.css';
 import { resourceOptions } from '../../../data/resourceOptions';
 
 interface ResourceStepProps {
@@ -12,16 +12,17 @@ export function ResourceStep({
   onToggle,
 }: ResourceStepProps) {
   return (
-    <>
-      {resourceOptions.map(option => (
-        <SelectionCard
-          key={option.id}
-          title={option.title}
-          icon={option.icon}
-          selected={selectedValue.includes(option.id)}
-          onClick={() => onToggle(option.id)}
-        />
-      ))}
-    </>
-  );
+  <div className={styles.container}>
+
+    {resourceOptions.map(option => (
+      <SelectionCard
+        key={option.id}
+        title={option.title}
+        icon={option.icon}
+        selected={selectedValue.includes(option.id)}
+        onClick={() => onToggle(option.id)}
+      />
+    ))}
+  </div>
+);
 }

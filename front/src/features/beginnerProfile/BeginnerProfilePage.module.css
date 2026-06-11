@@ -1,9 +1,11 @@
 .page {
   min-height: 100vh;
+
+  background: #f7fbf0;
 }
 
 .content {
-  max-width: 500px;
+  max-width: 520px;
 
   margin: 0 auto;
 

@@ -1,0 +1,34 @@
+.container {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.helper {
+  font-size: 14px;
+
+  color: #707a6c;
+
+  margin-bottom: 4px;
+}
+
+.container button {
+  min-height: 90px;
+
+  border-radius: 20px;
+
+  background: white;
+
+  border: 2px solid #e5eadf;
+
+  transition: all .2s ease;
+}
+
+.container button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.08);
+}

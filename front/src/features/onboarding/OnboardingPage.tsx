@@ -1,29 +1,34 @@
 import styles from './OnboardingPage.module.css';
+
 import { Header } from '../../shared/components/Header/Header';
 import { HeroSection } from '../../features/onboarding/components/HeroSection/HeroSection';
 import { OptionCard } from '../../features/onboarding/components/OptionCard/OptionCard';
+
 import { onboardingOptions } from './data/onboardingOptions';
-import { TextButton } from '../../shared/components/TextButton/TextButton'
+
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../auth/hooks/useAuth';
+
+import {
+  useAnonymousLogin,
+} from '../auth/hooks/useAnonymousLogin';
 
 export function OnboardingPage() {
   const navigate = useNavigate();
 
-const { login } = useAuth();
+  const {
+    submit,
+  } = useAnonymousLogin();
 
-function handleAnonymousAccess() {
-  login(
-    'anonymous-token',
-    {
-      id: 0,
-      name: 'Visitante',
-      email: '',
+  async function handleAnonymousAccess() {
+    try {
+      await submit();
+
+      navigate('/home');
+    } catch (error) {
+      console.error(error);
     }
-  );
+  }
 
-  navigate('/home');
-}
   return (
     <div className={styles.page}>
       <Header />
@@ -42,11 +47,13 @@ function handleAnonymousAccess() {
           ))}
         </section>
 
-        <TextButton
-          onClick={handleAnonymousAccess}
-        >
-          Acessar app sem criar perfil
-        </TextButton>
+        <button
+  type="button"
+  className={styles.guestButton}
+  onClick={handleAnonymousAccess}
+>
+  Acessar app sem criar perfil
+</button>
       </main>
     </div>
   );

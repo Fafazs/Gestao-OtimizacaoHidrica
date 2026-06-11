@@ -1,35 +1,52 @@
 import styles from './TaskCard.module.css';
 
 interface TaskCardProps {
-  cropName: string;
-  irrigationTime: number;
+  title: string;
+  description: string;
+
   fieldName: string;
+  cropName: string;
+
+  irrigationDuration: number;
 }
 
 export function TaskCard({
-  cropName,
-  irrigationTime,
+  title,
+  description,
   fieldName,
+  cropName,
+  irrigationDuration,
 }: TaskCardProps) {
+
   return (
     <section className={styles.card}>
+
       <span className={styles.badge}>
         {fieldName}
       </span>
 
-      <h2>{cropName}</h2>
+      <h2>
+        {title}
+      </h2>
 
       <p>
-        Tempo de rega recomendado
+        {description}
       </p>
 
-      <strong>
-        {irrigationTime} MIN
-      </strong>
+      <small>
+        Cultura: {cropName}
+      </small>
+
+      {irrigationDuration > 0 && (
+        <div className={styles.duration}>
+  💧 {irrigationDuration} min
+</div>
+      )}
 
       <button className={styles.button}>
-        💧 Regar por {irrigationTime} Min
+        ✅ Concluir tarefa
       </button>
+
     </section>
   );
 }

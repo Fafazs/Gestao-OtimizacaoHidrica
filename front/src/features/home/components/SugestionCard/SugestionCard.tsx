@@ -20,10 +20,6 @@ export function SuggestionCard({
 
         <p>{description}</p>
       </div>
-
-      <button className={styles.button}>
-        Ver detalhes
-      </button>
     </article>
   );
 }

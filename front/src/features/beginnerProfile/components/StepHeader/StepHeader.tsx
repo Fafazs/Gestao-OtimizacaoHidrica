@@ -19,6 +19,15 @@ export function StepHeader({
         Passo {currentStep} de {totalSteps}
       </span>
 
+      <div className={styles.progress}>
+        <div
+          className={styles.progressFill}
+          style={{
+            width: `${(currentStep / totalSteps) * 100}%`,
+          }}
+        />
+      </div>
+
       <h2 className={styles.title}>
         {title}
       </h2>

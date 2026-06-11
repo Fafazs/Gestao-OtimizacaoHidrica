@@ -10,13 +10,9 @@ import { ObjectiveStep } from './components/Steps/ObjectiveStep/ObjectiveStep';
 import { CropStep } from './components/Steps/CropStep/CropStep';
 import { ResourceStep } from './components/Steps/ResourceStep/ResourceStep';
 import { AccountStep } from './components/Steps/AccountStep/AccountStep';
-
 import { useRegister } from '../auth/hooks/useRegister';
 import { useBeginnerProfile } from './hooks/useBeginnerProfile';
 import { useNavigate } from 'react-router-dom';
-
-// PRÓXIMO PASSO EXATO: Importando o gerador dinâmico de canteiros baseado no onboarding
-import { createMyField } from '../field/services/fieldService';
 
 export function BeginnerProfilePage() {
   const {
@@ -57,32 +53,29 @@ export function BeginnerProfilePage() {
   const currentHeader = stepTitles[currentStep as keyof typeof stepTitles];
 
   async function handleRegister() {
-    try {
-      // 1. Cria o usuário e faz login automático via Contexto
-      await submit({
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        spaceId: formData.spaceId!,
-        objectiveId: formData.objectiveId!,
-        cropId: formData.cropId!,
-        resourceIds: formData.resourceIds,
-      });
+  try {
 
-      // 2. Cria o campo persistente com as respostas coletadas nas etapas anteriores
-      await createMyField({
-        spaceId: formData.spaceId!,
-        objectiveId: formData.objectiveId!,
-        cropId: formData.cropId!,
-        resourceIds: formData.resourceIds,
-      });
+    await submit({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+      spaceId: formData.spaceId!,
+      objectiveId: formData.objectiveId!,
+      cropId: formData.cropId!,
+      resourceIds: formData.resourceIds,
+    });
 
-      // 3. Com usuário autenticado e canteiro gerado, navega em segurança
-      navigate('/home');
-    } catch (error) {
-      console.error('Erro no fluxo de registro do onboarding:', error);
-    }
+    navigate('/home');
+
+  } catch (error) {
+
+    console.error(
+      'Erro no registro:',
+      error
+    );
+
   }
+}
 
   return (
     <div className={styles.page}>
@@ -125,6 +118,7 @@ export function BeginnerProfilePage() {
             <ResourceStep
               selectedValue={formData.resourceIds}
               onToggle={toggleResource}
+              
             />
           )}
 

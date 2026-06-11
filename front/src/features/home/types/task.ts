@@ -1,6 +1,21 @@
 export interface Task {
   id: number;
-  cropName: string;
-  irrigationTime: number;
-  fieldName: string;
+
+  title: string;
+
+  description: string;
+
+  priority: number;
+
+  status: string;
+
+  irrigationDurationMinutes: number;
+
+  field: {
+    id: number;
+
+    name: string;
+
+    cropName: string;
+  };
 }

@@ -1,6 +1,19 @@
 import styles from './FieldStatusCard.module.css';
 
-export function FieldStatusCard() {
+interface FieldStatusCardProps {
+  totalFields: number;
+  completedFields: number;
+}
+
+export function FieldStatusCard({
+  totalFields,
+  completedFields,
+}: FieldStatusCardProps) {
+
+  const allCompleted =
+    totalFields > 0 &&
+    totalFields === completedFields;
+
   return (
     <section className={styles.card}>
       <div className={styles.icon}>
@@ -8,11 +21,15 @@ export function FieldStatusCard() {
       </div>
 
       <div className={styles.content}>
-        <h3>O campo está saudável</h3>
+        <h3>
+          {allCompleted
+            ? 'Todos os campos estão saudáveis'
+            : 'Existem tarefas pendentes'}
+        </h3>
 
         <p>
-          Tudo certo com os seus
-          4 canteiros.
+          {completedFields} de {totalFields}
+          campos concluíram suas tarefas hoje.
         </p>
       </div>
     </section>

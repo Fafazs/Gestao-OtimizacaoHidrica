@@ -15,19 +15,19 @@ export function OptionCard({
 }: OptionCardProps) {
   return (
     <Link
-      to={to}
-      className={styles.card}
-    >
-      <div className={styles.iconWrapper}>
-        <img
-          src={icon}
-          alt={title}
-        />
-      </div>
+  to={to}
+  className={styles.card}
+>
+  <div className={styles.iconWrapper}>
+    <img
+      src={icon}
+      alt=""
+    />
+  </div>
 
-      <h2 className={styles.title}>
-        {title}
-      </h2>
-    </Link>
+  <span className={styles.title}>
+    {title}
+  </span>
+</Link>
   );
 }

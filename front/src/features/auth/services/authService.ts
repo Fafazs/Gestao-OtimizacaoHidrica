@@ -1,3 +1,6 @@
+import { apiFetch }
+from '../../../shared/services/api';
+
 import type { RegisterDTO }
 from '../dto/registerDTO';
 
@@ -8,19 +11,48 @@ export async function register(
   data: RegisterDTO
 ): Promise<RegisterResponseDTO> {
 
-  console.log('REQUEST ENVIADA:', data);
+  return apiFetch(
+    '/api/auth/register',
+    {
+      method: 'POST',
 
-  await new Promise(resolve =>
-    setTimeout(resolve, 1500)
+      headers: {
+        'Content-Type':
+          'application/json',
+      },
+
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+
+        spaceId: data.spaceId,
+
+        objectId:
+          data.objectiveId,
+
+        cropId: data.cropId,
+
+        resourceIds:
+          data.resourceIds,
+      }),
+    }
+  );
+}
+
+export async function anonymousLogin() {
+  const response = await fetch(
+    'http://localhost:8080/api/auth/anonymous',
+    {
+      method: 'POST',
+    }
   );
 
-  return {
-    token: 'jwt-token-fake-123',
+  if (!response.ok) {
+    throw new Error(
+      'Erro ao acessar como visitante'
+    );
+  }
 
-    user: {
-      id: 1,
-      name: data.name,
-      email: data.email,
-    },
-  };
+  return response.json();
 }

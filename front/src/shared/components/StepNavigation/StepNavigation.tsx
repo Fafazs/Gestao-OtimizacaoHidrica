@@ -1,42 +1,43 @@
 import styles from './StepNavigation.module.css';
 
 interface StepNavigationProps {
+  showPrevious: boolean;
+
+  onPrevious: () => void;
   onNext: () => void;
-  onPrevious?: () => void;
+
+  nextLabel: string;
 
   disableNext?: boolean;
-  showPrevious?: boolean;
-
-  nextLabel?: string;
 }
 
 export function StepNavigation({
-  onNext,
+  showPrevious,
   onPrevious,
-
-  disableNext = false,
-  showPrevious = true,
-
-  nextLabel = 'Continuar',
+  onNext,
+  nextLabel,
+  disableNext,
 }: StepNavigationProps) {
   return (
-    <div className={styles.navigation}>
-      {showPrevious && (
-        <button
-          className={styles.secondaryButton}
-          onClick={onPrevious}
-        >
-          Voltar
-        </button>
-      )}
+    <footer className={styles.container}>
+      <div className={styles.actions}>
+        {showPrevious && (
+          <button
+            className={styles.previous}
+            onClick={onPrevious}
+          >
+            Voltar
+          </button>
+        )}
 
-      <button
-        className={styles.primaryButton}
-        disabled={disableNext}
-        onClick={onNext}
-      >
-        {nextLabel}
-      </button>
-    </div>
+        <button
+          className={styles.next}
+          onClick={onNext}
+          disabled={disableNext}
+        >
+          {nextLabel}
+        </button>
+      </div>
+    </footer>
   );
 }

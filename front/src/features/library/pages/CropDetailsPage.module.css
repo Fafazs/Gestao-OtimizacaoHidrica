@@ -1,0 +1,237 @@
+.page {
+  min-height: 100vh;
+
+  background: #f7fbf0;
+}
+
+/* HEADER */
+
+.header {
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 0 24px;
+
+  background: white;
+
+  border-bottom: 2px solid #f1f5eb;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.04);
+}
+
+.backButton {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f1f5eb;
+
+  color: #0d631b;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.backButton:hover {
+  background: #e5eadf;
+}
+
+.header h1 {
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #0d631b;
+}
+
+/* HERO */
+
+.hero {
+  height: 280px;
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: end;
+
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,.15),
+      rgba(0,0,0,.55)
+    );
+}
+
+.overlay {
+  position: relative;
+
+  z-index: 1;
+
+  padding: 24px;
+
+  color: white;
+}
+
+.overlay h2 {
+  font-size: 32px;
+  font-weight: 700;
+
+  margin-bottom: 8px;
+}
+
+.badge {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: #ff9800;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* CONTENT */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  max-width: 500px;
+
+  margin: 0 auto;
+
+  padding: 24px;
+  padding-bottom: 120px;
+}
+
+/* CARDS */
+
+.card {
+  padding: 24px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.05);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #181d17;
+}
+
+.card p {
+  color: #40493d;
+
+  line-height: 1.6;
+}
+
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.card li {
+  padding: 12px 16px;
+
+  border-radius: 12px;
+
+  background: #f1f5eb;
+
+  color: #181d17;
+}
+
+/* INFO GRID */
+
+.infoGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 24px 16px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.05);
+
+  font-size: 28px;
+}
+
+.infoCard strong {
+  font-size: 16px;
+
+  color: #0d631b;
+}
+
+.infoCard span {
+  color: #40493d;
+
+  font-size: 14px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 480px) {
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+}
