@@ -1,0 +1,18 @@
+.card {
+  display: flex;
+  align-items: center;
+}
+
+.card h2 {
+  font-size: 24px;
+  font-weight: 700;
+
+  color: #0d631b;
+
+  margin-bottom: 4px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #657267;
+}

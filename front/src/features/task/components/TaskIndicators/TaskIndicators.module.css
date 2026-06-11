@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 16px;
+}
+
+.dot,
+.active {
+  transition: all .25s ease;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 999px;
+
+  background: #d8ddd5;
+}
+
+.active {
+  width: 32px;
+  height: 10px;
+
+  border-radius: 999px;
+
+  background: #2e7d32;
+
+  box-shadow:
+    0 0 0 4px rgba(46,125,50,.12);
+}

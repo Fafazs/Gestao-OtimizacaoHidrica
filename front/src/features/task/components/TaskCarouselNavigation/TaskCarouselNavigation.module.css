@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 16px;
+}
+
+.container button {
+  flex: 1;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: white;
+
+  color: #0d631b;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+
+  transition: all .2s ease;
+}
+
+.container button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.container button:active:not(:disabled) {
+  transform: scale(.98);
+}
+
+.container button:disabled {
+  opacity: .4;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+.container button {
+  background: #edf7ea;
+}

@@ -1,0 +1,65 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field input {
+  height: 60px;
+
+  border: 2px solid #dce4d7;
+
+  border-radius: 16px;
+
+  padding: 0 16px;
+
+  font-size: 16px;
+
+  transition: all .2s ease;
+}
+
+.field input:focus {
+  outline: none;
+
+  border-color: var(--color-primary);
+}
+
+.success {
+  color: #2e7d32;
+
+  font-weight: 600;
+}
+
+.error {
+  color: #d32f2f;
+
+  font-weight: 600;
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.showButton {
+  position: absolute;
+
+  right: 16px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}

@@ -1,0 +1,32 @@
+:root {
+    --color-primary: #0d631b;
+    --color-primary-light: #a3f69c;
+    --color-secondary: #0288d1;
+
+    --color-background: #f7fbf0;
+    --color-surface: #ffffff;
+
+    --color-text: #181d17;
+    --color-text-secondary: #40493d;
+
+    --color-outline: #bfcaba;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 999px;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 12px;
+    --spacing-md: 24px;
+    --spacing-lg: 40px;
+    --spacing-xl: 64px;
+
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+    --touch-target: 60px;
+
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Lexend', sans-serif;
+}

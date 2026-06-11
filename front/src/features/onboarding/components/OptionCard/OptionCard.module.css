@@ -1,0 +1,58 @@
+.card {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 24px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  text-decoration: none;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+  border: 2px solid transparent;
+
+  transition: 0.2s;
+}
+
+.card:hover {
+  border-color: #0d631b;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+
+  min-width: 60px;
+
+  border-radius: 999px;
+
+  background: #a3f69c;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconWrapper img {
+  width: 36px;
+  height: 36px;
+
+  object-fit: contain;
+}
+
+.title {
+  font-size: 20px;
+
+  font-weight: 600;
+
+  color: #181d17;
+}

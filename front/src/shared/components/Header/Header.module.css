@@ -1,0 +1,61 @@
+.header {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px 24px;
+
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid #ececec;
+
+  z-index: 100;
+
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  background: transparent;
+
+  border-radius: var(--radius-full);
+
+  color: var(--color-primary);
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--color-primary);
+}
+
+.logoWrapper h1 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 700;
+}

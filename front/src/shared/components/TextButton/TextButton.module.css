@@ -1,0 +1,20 @@
+.button {
+  background: transparent;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  color: var(--color-text-secondary);
+
+  cursor: pointer;
+
+  text-decoration: underline;
+  opacity: 0.8;
+
+  transition: 0.2s;
+}
+
+.button:hover {
+  opacity: 1;
+}

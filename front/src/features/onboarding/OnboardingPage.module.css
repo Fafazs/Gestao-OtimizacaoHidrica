@@ -1,0 +1,48 @@
+.page {
+  min-height: 100vh;
+
+  background: #f4f6f8;
+}
+
+.content {
+  max-width: 500px;
+
+  margin: 0 auto;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 40px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.guestButton {
+  height: 60px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: #0288d1;
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.guestButton:active {
+  transform: scale(0.98);
+}
